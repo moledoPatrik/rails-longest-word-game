@@ -1,0 +1,16 @@
+<h1>I am the score page</h1>
+<h2>Grid</h2>
+<p class="my-4">
+<% @letters.each do |letter| %>
+  <span class="border border-info p-3"><%= letter %></span>
+<% end %>
+</p>
+
+<h2>Guess it</h2>
+<form action="/score" method="POST" data-turbo="false">
+  <input type="text" name="word">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters%>
+  <%= hidden_field_tag :start_time, Time.now%>
+  <input type="submit" value="Guess!" class="btn btn-primary">
+</form>
